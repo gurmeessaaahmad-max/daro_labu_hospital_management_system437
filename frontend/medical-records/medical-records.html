@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medical Records | Daro Labu Hospital</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/medical-records.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-hospital"></i>
+            </div>
+
+            <div>
+                <h2>Daro Labu</h2>
+                <span>Hospital Management</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <div class="sidebar-section-title">MAIN</div>
+
+            <a href="../dashboard.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="../patients/patients.html">
+                <i class="fas fa-user-injured"></i>
+                <span>Patients</span>
+            </a>
+
+            <a href="../doctors/doctors.html">
+                <i class="fas fa-user-doctor"></i>
+                <span>Doctors</span>
+            </a>
+
+            <a href="../appointments/appointments.html">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+
+            <div class="sidebar-section-title">CLINICAL</div>
+
+            <a href="medical-records.html" class="active">
+                <i class="fas fa-file-medical"></i>
+                <span>Medical Records</span>
+            </a>
+
+            <a href="../prescriptions/prescriptions.html">
+                <i class="fas fa-prescription-bottle-medical"></i>
+                <span>Prescriptions</span>
+            </a>
+
+            <a href="../pharmacy/pharmacy.html">
+                <i class="fas fa-pills"></i>
+                <span>Pharmacy</span>
+            </a>
+
+            <a href="../laboratory/laboratory.html">
+                <i class="fas fa-flask"></i>
+                <span>Laboratory</span>
+            </a>
+
+            <div class="sidebar-section-title">ADMINISTRATION</div>
+
+            <a href="../billing/billing.html">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Billing</span>
+            </a>
+
+            <a href="../reports/reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+            <a href="../settings/settings.html">
+                <i class="fas fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../login.html" onclick="logout()">
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <button class="menu-toggle" id="mobileMenu" type="button">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div>
+                <h1>Medical Records</h1>
+                <p>Manage patient clinical information</p>
+            </div>
+
+        </header>
+
+
+        <section class="content-area">
+
+            <!-- ================= STATISTICS ================= -->
+
+            <div class="record-stats">
+
+                <div class="record-stat">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Records</span>
+                        <strong id="totalRecords">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="record-stat">
+                    <div class="stat-icon green">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+
+                    <div>
+                        <span>Diagnosed</span>
+                        <strong id="diagnosedRecords">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="record-stat">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+
+                    <div>
+                        <span>With Appointment</span>
+                        <strong id="appointmentRecords">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="record-stat">
+                    <div class="stat-icon red">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+
+                    <div>
+                        <span>Today</span>
+                        <strong id="todayRecords">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= FORM ================= -->
+
+            <div class="page-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>
+                            <i class="fas fa-notes-medical"></i>
+                            <span id="formTitle">Medical Record</span>
+                        </h2>
+
+                        <p>
+                            Create or update a patient's medical record
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="medicalRecordForm">
+
+                    <input type="hidden" id="recordId">
+
+
+                    <!-- PATIENT / DOCTOR / APPOINTMENT -->
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="patient">
+                                Patient <span>*</span>
+                            </label>
+
+                            <select id="patient" required>
+
+                                <option value="">
+                                    Select patient
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="doctor">
+                                Doctor <span>*</span>
+                            </label>
+
+                            <select id="doctor" required>
+
+                                <option value="">
+                                    Select doctor
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="appointment">
+                                Appointment
+                            </label>
+
+                            <select id="appointment">
+
+                                <option value="">
+                                    No appointment
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="visitDate">
+                                Visit Date
+                            </label>
+
+                            <input
+                                type="datetime-local"
+                                id="visitDate"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CHIEF COMPLAINT -->
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+
+                            <label for="chiefComplaint">
+                                Chief Complaint
+                            </label>
+
+                            <textarea
+                                id="chiefComplaint"
+                                rows="3"
+                                placeholder="Enter the patient's main complaint..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SYMPTOMS / DIAGNOSIS -->
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="symptoms">
+                                Symptoms
+                            </label>
+
+                            <textarea
+                                id="symptoms"
+                                rows="5"
+                                placeholder="Enter patient's symptoms..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="diagnosis">
+                                Diagnosis
+                            </label>
+
+                            <textarea
+                                id="diagnosis"
+                                rows="5"
+                                placeholder="Enter diagnosis..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TREATMENT / NOTES -->
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="treatment">
+                                Treatment
+                            </label>
+
+                            <textarea
+                                id="treatment"
+                                rows="5"
+                                placeholder="Enter treatment or medication information..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="notes">
+                                Clinical Notes
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                rows="5"
+                                placeholder="Enter additional clinical notes..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM BUTTONS -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn-primary"
+                            id="saveRecordBtn"
+                        >
+                            <i class="fas fa-save"></i>
+                            Save Record
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn-secondary"
+                            id="clearRecord"
+                        >
+                            <i class="fas fa-rotate-left"></i>
+                            Clear
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= RECORD LIST ================= -->
+
+            <div class="page-card">
+
+                <div class="list-header">
+
+                    <div>
+
+                        <h2>
+                            <i class="fas fa-folder-open"></i>
+                            Medical Records
+                        </h2>
+
+                        <p>
+                            View and manage patient medical history
+                        </p>
+
+                    </div>
+
+
+                    <div class="search-area">
+
+                        <input
+                            type="text"
+                            id="searchRecord"
+                            placeholder="Search patient, doctor, diagnosis..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Patient</th>
+
+                                <th>Doctor</th>
+
+                                <th>Date</th>
+
+                                <th>Diagnosis</th>
+
+                                <th>Appointment</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="recordsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    id="emptyRecords"
+                    class="empty-state"
+                    style="display:none;"
+                >
+
+                    <i class="fas fa-file-circle-xmark"></i>
+
+                    <h3>No Medical Records</h3>
+
+                    <p>
+                        There are no medical records to display.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="../js/medical-records.js"></script>
+
+</body>
+</html>

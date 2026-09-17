@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pharmacy | Daro Labu Hospital</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="../css/pharmacy.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="hospital-brand">
+        <div class="brand-icon">
+            <i class="fa-solid fa-hospital"></i>
+        </div>
+
+        <div class="brand-text">
+            <h2>Daro Labu</h2>
+            <p>Hospital</p>
+        </div>
+    </div>
+
+    <div class="menu-title">MAIN MENU</div>
+
+    <nav class="sidebar-menu">
+
+        <a href="../dashboard.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="../patients/patients.html">
+            <i class="fa-solid fa-hospital-user"></i>
+            <span>Patients</span>
+        </a>
+
+        <a href="../doctors/doctors.html">
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Doctors</span>
+        </a>
+
+        <a href="../appointments/appointments.html">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Appointments</span>
+        </a>
+
+        <div class="menu-section-title">CLINICAL</div>
+
+        <a href="../medical-records/medical-records.html">
+            <i class="fa-solid fa-file-medical"></i>
+            <span>Medical Records</span>
+        </a>
+
+        <a href="../prescriptions/prescriptions.html">
+            <i class="fa-solid fa-prescription-bottle-medical"></i>
+            <span>Prescriptions</span>
+        </a>
+
+        <a href="pharmacy.html" class="active">
+            <i class="fa-solid fa-pills"></i>
+            <span>Pharmacy</span>
+        </a>
+
+        <a href="../laboratory/laboratory.html">
+            <i class="fa-solid fa-flask"></i>
+            <span>Laboratory</span>
+        </a>
+
+        <div class="menu-section-title">ADMINISTRATION</div>
+
+        <a href="../billing/billing.html">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>Billing</span>
+        </a>
+
+        <a href="../billing/payment.html">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <span>Payments</span>
+        </a>
+
+        <a href="../reports/reports.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Reports</span>
+        </a>
+
+        <a href="../settings/settings.html">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <button type="button" class="logout-btn" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MOBILE OVERLAY -->
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="main-content">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="page-heading">
+
+            <div class="title-row">
+
+                <h1>Pharmacy</h1>
+
+                <span>
+                    Manage medicines, stock, prices, and expiry dates
+                </span>
+
+            </div>
+
+            <div class="administrator">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Administrator</span>
+            </div>
+
+        </div>
+
+        <div class="user-info">
+
+            <div class="user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+                <strong id="currentUserName">
+                    System Administrator
+                </strong>
+
+                <span id="currentUserRole">
+                    Administrator
+                </span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENT
+    ====================================================== -->
+
+    <section class="content-area">
+
+        <!-- PHARMACY HEADER -->
+
+        <div class="pharmacy-banner">
+
+            <div class="banner-content">
+
+                <h2>
+                    <i class="fa-solid fa-pills"></i>
+                    Pharmacy Management
+                </h2>
+
+                <p>
+                    Manage medicine inventory, stock levels,
+                    prices, and expiry dates.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="primary-btn banner-add-btn"
+                id="openMedicineModalBtn"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Add New Medicine
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Total Medicines</span>
+
+                    <strong id="totalMedicines">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Available</span>
+
+                    <strong id="inStockMedicines">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Low Stock</span>
+
+                    <strong id="lowStockMedicines">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Out of Stock</span>
+
+                    <strong id="outOfStockMedicines">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEARCH / FILTER
+        ================================================== -->
+
+        <div class="toolbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="medicineSearch"
+                    placeholder="Search medicine by name or generic name..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <select
+                id="categoryFilter"
+                aria-label="Filter by category"
+            >
+
+                <option value="">
+                    All Categories
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="addMedicineBtn"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Add New Medicine
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             MEDICINE TABLE
+        ================================================== -->
+
+        <div class="table-card">
+
+            <div class="table-header">
+
+                <div>
+
+                    <h2>
+                        <i class="fa-solid fa-pills"></i>
+                        Medicine Inventory
+                    </h2>
+
+                    <p>
+                        Current hospital pharmaceutical supplies
+                    </p>
+
+                </div>
+
+                <span
+                    class="record-count"
+                    id="recordCount"
+                >
+                    0 Medicines
+                </span>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Code</th>
+
+                            <th>Medicine</th>
+
+                            <th>Generic Name</th>
+
+                            <th>Dosage</th>
+
+                            <th>Unit</th>
+
+                            <th>Selling Price</th>
+
+                            <th>Stock</th>
+
+                            <th>Status</th>
+
+                            <th>Expiry</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="pharmacyTableBody"></tbody>
+
+                </table>
+
+
+                <!-- EMPTY STATE -->
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                >
+
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+
+                    <h3>No medicines found</h3>
+
+                    <p>
+                        Add a medicine to start managing
+                        your pharmacy inventory.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        id="emptyAddBtn"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        Add New Medicine
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     MEDICINE MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="medicineModal"
+    aria-hidden="true"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="modalTitle">
+                    Add New Medicine
+                </h2>
+
+                <p>
+                    Enter medicine information
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="close-modal"
+                id="closeMedicineModalBtn"
+                aria-label="Close"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form id="medicineForm">
+
+            <input
+                type="hidden"
+                id="medicineId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <!-- MEDICINE NAME -->
+
+                <div class="form-group full">
+
+                    <label for="medicineName">
+                        Medicine Name <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medicineName"
+                        placeholder="Example: Paracetamol"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- GENERIC NAME -->
+
+                <div class="form-group">
+
+                    <label for="genericName">
+                        Generic Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="genericName"
+                        placeholder="Example: Paracetamol"
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category">
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DOSAGE -->
+
+                <div class="form-group">
+
+                    <label for="dosage">
+                        Dosage
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dosage"
+                        placeholder="Example: 500 mg"
+                    >
+
+                </div>
+
+
+                <!-- UNIT -->
+
+                <div class="form-group">
+
+                    <label for="unit">
+                        Unit
+                    </label>
+
+                    <select id="unit">
+
+                        <option value="">
+                            Select Unit
+                        </option>
+
+                        <option value="Tablet">
+                            Tablet
+                        </option>
+
+                        <option value="Capsule">
+                            Capsule
+                        </option>
+
+                        <option value="Bottle">
+                            Bottle
+                        </option>
+
+                        <option value="Syrup">
+                            Syrup
+                        </option>
+
+                        <option value="Injection">
+                            Injection
+                        </option>
+
+                        <option value="Tube">
+                            Tube
+                        </option>
+
+                        <option value="Piece">
+                            Piece
+                        </option>
+
+                        <option value="Pack">
+                            Pack
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="form-group">
+
+                    <label for="stockQuantity">
+                        Stock Quantity <span>*</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="stockQuantity"
+                        min="0"
+                        step="1"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- REORDER LEVEL -->
+
+                <div class="form-group">
+
+                    <label for="reorderLevel">
+                        Reorder Level
+                    </label>
+
+                    <input
+                        type="number"
+                        id="reorderLevel"
+                        min="0"
+                        step="1"
+                        value="10"
+                    >
+
+                </div>
+
+
+                <!-- PURCHASE PRICE -->
+
+                <div class="form-group">
+
+                    <label for="purchasePrice">
+                        Purchase Price (ETB)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="purchasePrice"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <!-- SELLING PRICE -->
+
+                <div class="form-group">
+
+                    <label for="sellingPrice">
+                        Selling Price (ETB) <span>*</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="sellingPrice"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EXPIRY DATE -->
+
+                <div class="form-group">
+
+                    <label for="expiryDate">
+                        Expiry Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="expiryDate"
+                    >
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label for="medicineStatus">
+                        Status
+                    </label>
+
+                    <select id="medicineStatus">
+
+                        <option value="Available">
+                            Available
+                        </option>
+
+                        <option value="Low Stock">
+                            Low Stock
+                        </option>
+
+                        <option value="Expired">
+                            Expired
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORM BUTTONS -->
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelMedicineBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="saveMedicineBtn"
+                >
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    <span id="saveButtonText">
+                        Save Medicine
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="../js/pharmacy.js"></script>
+
+</body>
+</html>

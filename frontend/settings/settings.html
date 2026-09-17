@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | Daro Labu Hospital</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="hospital-logo">
+                    <i class="fas fa-hospital"></i>
+                </div>
+
+                <div>
+                    <h2>Daro Labu</h2>
+                    <span>Hospital Management</span>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="../dashboard.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="../patients/patients.html">
+                    <i class="fas fa-user-injured"></i>
+                    <span>Patients</span>
+                </a>
+
+                <a href="../doctors/doctors.html">
+                    <i class="fas fa-user-doctor"></i>
+                    <span>Doctors</span>
+                </a>
+
+                <a href="../appointments/appointments.html">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Appointments</span>
+                </a>
+
+                <a href="../medical-records/medical-records.html">
+                    <i class="fas fa-file-medical"></i>
+                    <span>Medical Records</span>
+                </a>
+
+                <a href="../laboratory/laboratory.html">
+                    <i class="fas fa-flask"></i>
+                    <span>Laboratory</span>
+                </a>
+
+                <a href="../pharmacy/pharmacy.html">
+                    <i class="fas fa-pills"></i>
+                    <span>Pharmacy</span>
+                </a>
+
+                <a href="../prescriptions/prescriptions.html">
+                    <i class="fas fa-prescription-bottle-medical"></i>
+                    <span>Prescriptions</span>
+                </a>
+
+                <a href="../billing/billing.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Billing</span>
+                </a>
+
+                <a href="../billing/payment.html">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Payments</span>
+                </a>
+
+                <a href="../reports/reports.html">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Reports</span>
+                </a>
+
+                <a href="../settings/settings.html" class="active">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+
+                <a href="../login.html" id="logoutLink">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <button
+                    class="menu-toggle"
+                    id="mobileMenu"
+                    type="button"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="page-title">
+                    <h1>Hospital Settings</h1>
+                    <p>Manage hospital information and system settings</p>
+                </div>
+
+            </header>
+
+            <!-- CONTENT -->
+            <section class="settings-page">
+
+                <!-- Hospital Information -->
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div class="header-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+
+                        <div>
+                            <h2>Hospital Information</h2>
+                            <p>
+                                Enter the official information of your hospital.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <form id="hospitalSettingsForm">
+
+                        <div class="form-grid">
+
+                            <!-- Hospital Name -->
+                            <div class="form-group full-width">
+
+                                <label for="hospitalName">
+                                    Hospital Full Name
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fas fa-hospital"></i>
+
+                                    <input
+                                        type="text"
+                                        id="hospitalName"
+                                        placeholder="Enter hospital full name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <!-- Registration Number -->
+                            <div class="form-group">
+
+                                <label for="registrationNumber">
+                                    Registration Number
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fas fa-id-card"></i>
+
+                                    <input
+                                        type="text"
+                                        id="registrationNumber"
+                                        placeholder="Hospital registration number"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="form-group">
+
+                                <label for="hospitalPhone">
+                                    Phone / Mobile
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fas fa-phone"></i>
+
+                                    <input
+                                        type="tel"
+                                        id="hospitalPhone"
+                                        placeholder="+251 ..."
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+
+                                <label for="hospitalEmail">
+                                    Email Address
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fas fa-envelope"></i>
+
+                                    <input
+                                        type="email"
+                                        id="hospitalEmail"
+                                        placeholder="hospital@example.com"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <!-- Address -->
+                            <div class="form-group">
+
+                                <label for="hospitalAddress">
+                                    Address
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fas fa-location-dot"></i>
+
+                                    <input
+                                        type="text"
+                                        id="hospitalAddress"
+                                        placeholder="Enter hospital address"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <!-- Logo -->
+                            <div class="form-group full-width">
+
+                                <label for="hospitalLogo">
+                                    Hospital Logo URL
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fas fa-image"></i>
+
+                                    <input
+                                        type="text"
+                                        id="hospitalLogo"
+                                        placeholder="Enter logo image URL"
+                                    >
+
+                                </div>
+
+                                <small>
+                                    Example:
+                                    images/logo.png
+                                    or an online image URL.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="btn secondary"
+                                id="resetSettings"
+                            >
+                                <i class="fas fa-rotate-left"></i>
+                                Reset
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="btn primary"
+                            >
+                                <i class="fas fa-save"></i>
+                                Save Settings
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- Receipt Settings -->
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div class="header-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+
+                        <div>
+                            <h2>Receipt Settings</h2>
+
+                            <p>
+                                These settings will appear on printed receipts.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="receipt-preview">
+
+                        <div class="receipt-logo">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+
+                        <div class="receipt-info">
+
+                            <h3 id="previewHospitalName">
+                                Daro Labu Hospital
+                            </h3>
+
+                            <p id="previewAddress">
+                                Hospital Address
+                            </p>
+
+                            <p id="previewPhone">
+                                Phone: -
+                            </p>
+
+                            <p id="previewEmail">
+                                Email: -
+                            </p>
+
+                            <p id="previewRegistration">
+                                Registration No: -
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- System Information -->
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div class="header-icon">
+                            <i class="fas fa-circle-info"></i>
+                        </div>
+
+                        <div>
+                            <h2>System Information</h2>
+
+                            <p>
+                                Information about this hospital management system.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="system-info-grid">
+
+                        <div class="info-box">
+
+                            <i class="fas fa-hospital-user"></i>
+
+                            <div>
+                                <span>System Name</span>
+                                <strong>Daro Labu Hospital Management System</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="info-box">
+
+                            <i class="fas fa-code-branch"></i>
+
+                            <div>
+                                <span>Version</span>
+                                <strong>1.0.0</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="info-box">
+
+                            <i class="fas fa-database"></i>
+
+                            <div>
+                                <span>Current Data Storage</span>
+                                <strong>Browser LocalStorage</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="info-box">
+
+                            <i class="fas fa-server"></i>
+
+                            <div>
+                                <span>Backend</span>
+                                <strong>Not Connected Yet</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Message -->
+                <div
+                    id="settingsMessage"
+                    class="settings-message"
+                ></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/settings.js"></script>
+
+</body>
+
+</html>

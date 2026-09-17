@@ -1,0 +1,343 @@
+/* =========================================
+   DARO LABU HOSPITAL
+   SETTINGS PAGE
+========================================= */
+
+.settings-page {
+    padding: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   SETTINGS CARD
+========================================= */
+
+.settings-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e9eef3;
+}
+
+.settings-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.header-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #eaf4ff;
+    color: #0066a1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.settings-card-header h2 {
+    margin: 0 0 5px;
+    font-size: 20px;
+    color: #172b4d;
+}
+
+.settings-card-header p {
+    margin: 0;
+    color: #7b8794;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #344563;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8b98a9;
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px 13px 42px;
+    border: 1px solid #d9e1e8;
+    border-radius: 9px;
+    outline: none;
+    font-size: 14px;
+    color: #263238;
+    background: #fff;
+    transition: 0.2s;
+}
+
+.input-wrapper input:focus {
+    border-color: #0066a1;
+    box-shadow: 0 0 0 3px rgba(0, 102, 161, 0.1);
+}
+
+.form-group small {
+    margin-top: 7px;
+    color: #8b98a9;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #edf1f5;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn.primary {
+    background: #0066a1;
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #00517f;
+}
+
+.btn.secondary {
+    background: #eef2f6;
+    color: #344563;
+}
+
+.btn.secondary:hover {
+    background: #dfe5eb;
+}
+
+
+/* =========================================
+   RECEIPT PREVIEW
+========================================= */
+
+.receipt-preview {
+    border: 1px dashed #b9c6d3;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fafcfe;
+}
+
+.receipt-logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    background: #0066a1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.receipt-info h3 {
+    margin: 0 0 8px;
+    color: #172b4d;
+    font-size: 20px;
+}
+
+.receipt-info p {
+    margin: 4px 0;
+    color: #66788a;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   SYSTEM INFORMATION
+========================================= */
+
+.system-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border: 1px solid #e7edf2;
+    border-radius: 10px;
+    background: #fbfcfd;
+}
+
+.info-box > i {
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+    background: #eaf4ff;
+    color: #0066a1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-box div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-box span {
+    color: #8492a6;
+    font-size: 12px;
+}
+
+.info-box strong {
+    color: #263238;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.settings-message {
+    display: none;
+    padding: 13px 16px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.settings-message.success {
+    display: block;
+    background: #e8f7ee;
+    color: #18794e;
+    border: 1px solid #b9e8cd;
+}
+
+.settings-message.error {
+    display: block;
+    background: #fff0f0;
+    color: #c62828;
+    border: 1px solid #f2c1c1;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .system-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .receipt-preview {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .settings-page {
+        padding: 15px;
+    }
+
+    .settings-card {
+        padding: 18px;
+    }
+
+    .settings-card-header {
+        align-items: flex-start;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .receipt-preview {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .receipt-logo {
+        margin: 0 auto;
+    }
+
+}

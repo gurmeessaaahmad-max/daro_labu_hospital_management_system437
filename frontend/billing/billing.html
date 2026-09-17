@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billing | Daro Labu Hospital</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Billing CSS -->
+    <link rel="stylesheet" href="../css/billing.css">
+</head>
+
+<body>
+
+<!-- =========================
+     MOBILE OVERLAY
+========================= -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+<aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-header">
+        <div class="hospital-logo">
+            <i class="fa-solid fa-hospital"></i>
+        </div>
+
+        <div>
+            <h2>Daro Labu</h2>
+            <span>Hospital</span>
+        </div>
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a href="../dashboard/dashboard.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="../patients/patients.html">
+            <i class="fa-solid fa-user-injured"></i>
+            <span>Patients</span>
+        </a>
+
+        <a href="../doctors/doctors.html">
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Doctors</span>
+        </a>
+
+        <a href="../appointments/appointments.html">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Appointments</span>
+        </a>
+
+        <a href="../medical-records/medical-records.html">
+            <i class="fa-solid fa-file-medical"></i>
+            <span>Medical Records</span>
+        </a>
+
+        <a href="../prescriptions/prescriptions.html">
+            <i class="fa-solid fa-prescription-bottle-medical"></i>
+            <span>Prescriptions</span>
+        </a>
+
+        <a href="../pharmacy/pharmacy.html">
+            <i class="fa-solid fa-pills"></i>
+            <span>Pharmacy</span>
+        </a>
+
+        <a href="../laboratory/laboratory.html">
+            <i class="fa-solid fa-flask"></i>
+            <span>Laboratory</span>
+        </a>
+
+        <a href="billing.html" class="active">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>Billing</span>
+        </a>
+
+        <a href="../reports/reports.html">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Reports</span>
+        </a>
+
+        <a href="../settings/settings.html">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <button id="logoutBtn" class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<main class="main-content">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <button id="menuToggle" class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="page-title">
+            <h1>Billing & Invoices</h1>
+            <p>Manage hospital invoices and payments</p>
+        </div>
+
+        <button id="newInvoiceBtn" class="primary-btn">
+            <i class="fa-solid fa-plus"></i>
+            New Invoice
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="fa-solid fa-file-invoice"></i>
+            </div>
+
+            <div>
+                <span>Total Invoices</span>
+                <strong id="totalInvoices">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+                <span>Paid Invoices</span>
+                <strong id="paidInvoices">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon orange">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <span>Pending Invoices</span>
+                <strong id="pendingInvoices">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon purple">
+                <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+
+            <div>
+                <span>Total Revenue</span>
+                <strong id="totalRevenue">0.00 ETB</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         INVOICE FORM
+    ========================= -->
+    <section id="invoiceSection" class="invoice-form-section">
+
+        <div class="section-header">
+            <div>
+                <h2>Create Invoice</h2>
+                <p>Enter patient billing information</p>
+            </div>
+        </div>
+
+
+        <form id="billingForm">
+
+            <div class="form-grid">
+
+                <!-- PATIENT -->
+                <div class="form-group">
+                    <label for="invoicePatient">
+                        Patient <span>*</span>
+                    </label>
+
+                    <select id="invoicePatient" required>
+                        <option value="">Select patient</option>
+                    </select>
+
+                    <small id="patientHelp">
+                        Patient information will be loaded from the database.
+                    </small>
+                </div>
+
+
+                <!-- DOCTOR -->
+                <div class="form-group">
+                    <label for="invoiceDoctor">
+                        Doctor
+                    </label>
+
+                    <select id="invoiceDoctor">
+                        <option value="">Select doctor</option>
+                    </select>
+
+                    <small>
+                        Select the doctor responsible for this invoice.
+                    </small>
+                </div>
+
+
+                <!-- DATE -->
+                <div class="form-group">
+                    <label for="invoiceDate">
+                        Invoice Date <span>*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="invoiceDate"
+                        required
+                    >
+                </div>
+
+
+                <!-- SERVICE TYPE -->
+                <div class="form-group">
+                    <label for="invoiceServiceType">
+                        Service Type <span>*</span>
+                    </label>
+
+                    <select id="invoiceServiceType" required>
+
+                        <option value="">
+                            Select service
+                        </option>
+
+                        <option value="Consultation">
+                            Consultation
+                        </option>
+
+                        <option value="Laboratory">
+                            Laboratory
+                        </option>
+
+                        <option value="Pharmacy">
+                            Pharmacy
+                        </option>
+
+                        <option value="Admission">
+                            Admission
+                        </option>
+
+                        <option value="Procedure">
+                            Procedure
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="form-group full-width">
+
+                    <label for="invoiceDescription">
+                        Service Description <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="invoiceDescription"
+                        placeholder="Example: General consultation"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- QUANTITY -->
+                <div class="form-group">
+
+                    <label for="invoiceQuantity">
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="invoiceQuantity"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- UNIT PRICE -->
+                <div class="form-group">
+
+                    <label for="invoiceUnitPrice">
+                        Unit Price (ETB) <span>*</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="invoiceUnitPrice"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DISCOUNT -->
+                <div class="form-group">
+
+                    <label for="invoiceDiscount">
+                        Discount (ETB)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="invoiceDiscount"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <!-- PAYMENT STATUS -->
+                <div class="form-group">
+
+                    <label for="paymentStatus">
+                        Payment Status <span>*</span>
+                    </label>
+
+                    <select id="paymentStatus" required>
+
+                        <option value="Paid">
+                            Paid
+                        </option>
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="Partial Payment">
+                            Partial Payment
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PAYMENT METHOD -->
+                <div class="form-group">
+
+                    <label for="paymentMethod">
+                        Payment Method
+                    </label>
+
+                    <select id="paymentMethod">
+
+                        <option value="Cash">
+                            Cash
+                        </option>
+
+                        <option value="Card">
+                            Card
+                        </option>
+
+                        <option value="Bank Transfer">
+                            Bank Transfer
+                        </option>
+
+                        <option value="Mobile Money">
+                            Mobile Money
+                        </option>
+
+                        <option value="eBirr">
+                            eBirr
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- AMOUNT PAID -->
+                <div class="form-group">
+
+                    <label for="amountPaid">
+                        Amount Paid (ETB)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amountPaid"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <!-- NOTES -->
+                <div class="form-group full-width">
+
+                    <label for="invoiceNotes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="invoiceNotes"
+                        rows="3"
+                        placeholder="Additional notes..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="invoice-summary">
+
+                <div>
+                    <span>Subtotal</span>
+                    <strong id="subtotal">0.00 ETB</strong>
+                </div>
+
+                <div>
+                    <span>Discount</span>
+                    <strong id="discountDisplay">0.00 ETB</strong>
+                </div>
+
+                <div class="grand-total">
+                    <span>Total Amount</span>
+                    <strong id="totalAmount">0.00 ETB</strong>
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    id="clearFormBtn"
+                    class="secondary-btn"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    <i class="fa-solid fa-save"></i>
+                    Save Invoice
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         INVOICE LIST
+    ========================= -->
+    <section class="invoice-list-section">
+
+        <div class="list-header">
+
+            <div>
+                <h2>Invoices</h2>
+
+                <p>
+                    <span id="recordCount">0</span>
+                    invoices found
+                </p>
+            </div>
+
+
+            <div class="list-controls">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="invoiceSearch"
+                        placeholder="Search invoice or patient..."
+                    >
+
+                </div>
+
+
+                <select id="paymentStatusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Paid">
+                        Paid
+                    </option>
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                    <option value="Partial Payment">
+                        Partial Payment
+                    </option>
+
+                    <option value="Unpaid">
+                        Unpaid
+                    </option>
+
+                    <option value="Partially Paid">
+                        Partially Paid
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Invoice</th>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="invoiceTableBody">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- EMPTY STATE -->
+        <div id="emptyState" class="empty-state">
+
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+
+            <h3>No invoices found</h3>
+
+            <p>
+                Create your first invoice to see it here.
+            </p>
+
+            <button
+                id="emptyCreateBtn"
+                class="primary-btn"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Create Invoice
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     VIEW INVOICE MODAL
+========================= -->
+<div id="viewModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                <i class="fa-solid fa-file-invoice"></i>
+                Invoice Details
+            </h2>
+
+            <button id="closeViewModal" class="close-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div id="invoicePreview" class="invoice-preview">
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="closeViewBtn"
+                class="secondary-btn"
+            >
+                Close
+            </button>
+
+            <button
+                id="printInvoiceBtn"
+                class="primary-btn"
+            >
+                <i class="fa-solid fa-print"></i>
+                Print Invoice
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Billing JavaScript -->
+<script src="../js/billing.js"></script>
+
+</body>
+</html>

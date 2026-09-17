@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratory | Daro Labu Hospital</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Laboratory CSS -->
+    <link rel="stylesheet" href="../css/laboratory.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     MAIN LAYOUT
+     ========================================================= -->
+
+<div class="app-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fas fa-hospital"></i>
+            </div>
+
+            <div class="brand-text">
+
+                <h2>Daro Labu</h2>
+
+                <span>Hospital Management</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- USER -->
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+
+                <i class="fas fa-user"></i>
+
+            </div>
+
+            <div class="user-details">
+
+                <strong>Administrator</strong>
+
+                <span>Admin</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAIN MENU -->
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+
+            <a href="../dashboard/dashboard.html">
+
+                <i class="fas fa-chart-line"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="../patients/patients.html">
+
+                <i class="fas fa-user-injured"></i>
+
+                <span>Patients</span>
+
+            </a>
+
+
+            <a href="../doctors/doctors.html">
+
+                <i class="fas fa-user-doctor"></i>
+
+                <span>Doctors</span>
+
+            </a>
+
+
+            <a href="../appointments/appointments.html">
+
+                <i class="fas fa-calendar-check"></i>
+
+                <span>Appointments</span>
+
+            </a>
+
+
+            <a href="../medical-records/medical-records.html">
+
+                <i class="fas fa-file-medical"></i>
+
+                <span>Medical Records</span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SERVICES -->
+        <div class="menu-title services-title">
+            SERVICES
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+
+            <a
+                href="laboratory.html"
+                class="active"
+            >
+
+                <i class="fas fa-flask"></i>
+
+                <span>Laboratory</span>
+
+            </a>
+
+
+            <a href="../pharmacy/pharmacy.html">
+
+                <i class="fas fa-pills"></i>
+
+                <span>Pharmacy</span>
+
+            </a>
+
+
+            <a href="../billing/billing.html">
+
+                <i class="fas fa-file-invoice-dollar"></i>
+
+                <span>Billing</span>
+
+            </a>
+
+
+            <a href="../reports/reports.html">
+
+                <i class="fas fa-chart-bar"></i>
+
+                <span>Reports</span>
+
+            </a>
+
+
+            <a href="../settings/settings.html">
+
+                <i class="fas fa-cog"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP HEADER
+             ================================================= -->
+
+        <header class="top-header">
+
+
+            <div class="page-title">
+
+                <h1>Laboratory</h1>
+
+                <p>
+                    Manage laboratory tests and results
+                </p>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <!-- Notification -->
+                <button
+                    type="button"
+                    class="notification-button"
+                >
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="notification-badge">
+                        0
+                    </span>
+
+                </button>
+
+
+                <!-- User -->
+                <div class="header-user">
+
+                    <div class="header-avatar">
+
+                        <i class="fas fa-user"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>Administrator</strong>
+
+                        <span>Admin</span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+             ================================================= -->
+
+        <div class="page-content">
+
+
+            <!-- =================================================
+                 INTRO CARD
+                 ================================================= -->
+
+            <section class="intro-card">
+
+
+                <div class="intro-content">
+
+                    <h2>
+                        Laboratory Management
+                    </h2>
+
+                    <p>
+                        Register, search and manage laboratory
+                        tests and patient laboratory requests.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="addLabTestBtn"
+                    class="add-button"
+                >
+
+                    <i class="fas fa-plus"></i>
+
+                    New Lab Test
+
+                </button>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 STATISTICS
+                 ================================================= -->
+
+            <section class="stats-grid">
+
+
+                <!-- TOTAL -->
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+
+                        <i class="fas fa-flask"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Total Tests</span>
+
+                        <strong id="totalTests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REQUESTED -->
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+
+                        <i class="fas fa-clock"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Requested</span>
+
+                        <strong id="pendingTests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPLETED -->
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+
+                        <i class="fas fa-circle-check"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Completed</span>
+
+                        <strong id="completedTests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CANCELLED -->
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+
+                        <i class="fas fa-circle-xmark"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Cancelled</span>
+
+                        <strong id="cancelledTests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SEARCH
+                 ================================================= -->
+
+            <section class="search-card">
+
+
+                <div class="search-container">
+
+
+                    <div class="search-box">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="labSearch"
+                            placeholder="Search laboratory tests..."
+                        >
+
+                    </div>
+
+
+                    <div class="filter-box">
+
+                        <i class="fas fa-filter"></i>
+
+                        <select id="statusFilter">
+
+                            <option value="">
+                                All Status
+                            </option>
+
+                            <option value="Requested">
+                                Requested
+                            </option>
+
+                            <option value="Sample Collected">
+                                Sample Collected
+                            </option>
+
+                            <option value="Processing">
+                                Processing
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="Cancelled">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 TABLE
+                 ================================================= -->
+
+            <section class="table-card">
+
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h2>
+                            Laboratory Requests
+                        </h2>
+
+                        <p>
+                            View and manage patient laboratory tests
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Request ID</th>
+
+                                <th>Patient</th>
+
+                                <th>Doctor</th>
+
+                                <th>Test</th>
+
+                                <th>Category</th>
+
+                                <th>Date</th>
+
+                                <th>Priority</th>
+
+                                <th>Status</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="laboratoryTableBody">
+
+
+                            <tr>
+
+                                <td
+                                    colspan="9"
+                                    class="empty-row"
+                                >
+
+                                    <div class="empty-content">
+
+                                        <i class="fas fa-flask"></i>
+
+                                        <h3>
+                                            No laboratory requests
+                                        </h3>
+
+                                        <p>
+                                            Click "New Lab Test"
+                                            to create a laboratory request.
+                                        </p>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     LABORATORY MODAL
+     ========================================================= -->
+
+<div
+    id="labModal"
+    class="modal-overlay"
+>
+
+
+    <div class="modal">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <h2 id="labModalTitle">
+                    New Laboratory Test
+                </h2>
+
+                <p>
+                    Create a laboratory test request
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeLabModalBtn"
+                class="modal-close"
+            >
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <form id="laboratoryForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- PATIENT -->
+
+                <div class="form-group">
+
+                    <label>
+                        Patient <span>*</span>
+                    </label>
+
+                    <select
+                        id="labPatient"
+                        required
+                    >
+
+                        <option value="">
+                            Select patient
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DOCTOR -->
+
+                <div class="form-group">
+
+                    <label>
+                        Doctor
+                    </label>
+
+                    <select id="labDoctor">
+
+                        <option value="">
+                            Select doctor
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TEST -->
+
+                <div class="form-group">
+
+                    <label>
+                        Laboratory Test <span>*</span>
+                    </label>
+
+                    <select
+                        id="testName"
+                        required
+                    >
+
+                        <option value="">
+                            Select test
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <input
+                        type="text"
+                        id="testCategory"
+                        placeholder="Test category"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Request Date <span>*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="testDate"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PRIORITY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Priority
+                    </label>
+
+                    <select id="labPriority">
+
+                        <option value="Normal">
+                            Normal
+                        </option>
+
+                        <option value="Urgent">
+                            Urgent
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="labStatus">
+
+                        <option value="Requested">
+                            Requested
+                        </option>
+
+                        <option value="Sample Collected">
+                            Sample Collected
+                        </option>
+
+                        <option value="Processing">
+                            Processing
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                        <option value="Cancelled">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PRICE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="testPrice"
+                        value="0"
+                        min="0"
+                        step="0.01"
+                        readonly
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div class="form-group">
+
+                <label>
+                    Result
+                </label>
+
+                <textarea
+                    id="testResult"
+                    rows="3"
+                    placeholder="Enter laboratory result..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- NOTES -->
+
+            <div class="form-group">
+
+                <label>
+                    Notes
+                </label>
+
+                <textarea
+                    id="labNotes"
+                    rows="3"
+                    placeholder="Additional notes..."
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="modal-footer">
+
+
+                <button
+                    type="button"
+                    id="cancelLabBtn"
+                    class="cancel-button"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+
+                    <i class="fas fa-save"></i>
+
+                    Save Laboratory Request
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="../js/laboratory.js"></script>
+
+
+</body>
+
+</html>

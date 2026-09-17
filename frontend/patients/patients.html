@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Patients | Daro Labu Hospital</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- NEW Patients CSS -->
+    <link
+    rel="stylesheet"
+    href="./patients.css">
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- Hospital Logo / Name -->
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
+
+            <div class="brand-info">
+
+                <h2>Daro Labu</h2>
+
+                <p>Hospital Management</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="sidebar-nav">
+
+
+            <a
+                href="../dashboard/dashboard.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="patients.html"
+                class="nav-item active"
+            >
+
+                <i class="fa-solid fa-user-injured"></i>
+
+                <span>Patients</span>
+
+            </a>
+
+
+            <a
+                href="../doctors/doctors.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <span>Doctors</span>
+
+            </a>
+
+
+            <a
+                href="../appointments/appointments.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <span>Appointments</span>
+
+            </a>
+
+
+            <a
+                href="../pharmacy/pharmacy.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-pills"></i>
+
+                <span>Pharmacy</span>
+
+            </a>
+
+
+            <a
+                href="../laboratory/laboratory.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-flask"></i>
+
+                <span>Laboratory</span>
+
+            </a>
+
+
+            <a
+                href="../billing/billing.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                <span>Billing</span>
+
+            </a>
+
+
+            <a
+                href="../reports/reports.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>Reports</span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- Bottom Navigation -->
+
+        <div class="sidebar-footer">
+
+
+            <a
+                href="../settings/settings.html"
+                class="nav-item"
+            >
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="page-header">
+
+
+            <div class="page-heading">
+
+                <h1>Patients</h1>
+
+                <p>
+                    Manage and monitor hospital patients
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="registerPatientButton"
+                class="primary-button"
+            >
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Register Patient
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="statistics">
+
+
+            <!-- Total Patients -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Total Patients</span>
+
+                    <strong id="totalPatients">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Active Patients -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Active Patients</span>
+
+                    <strong id="activePatients">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Admitted Patients -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Admitted Patients</span>
+
+                    <strong id="admittedPatients">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Today's Patients -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-user-clock"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Today's Patients</span>
+
+                    <strong id="todayPatients">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PATIENTS TABLE CARD
+        ================================================== -->
+
+        <section class="patients-card">
+
+
+            <!-- Card Header -->
+
+            <div class="patients-header">
+
+
+                <div>
+
+                    <h2>Patient List</h2>
+
+                    <p>
+                        All registered patients
+                    </p>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="patientSearch"
+                        placeholder="Search patient..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Table -->
+
+            <div class="table-container">
+
+
+                <table id="patientsTable">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Patient ID</th>
+
+                            <th>Patient Name</th>
+
+                            <th>Gender</th>
+
+                            <th>Age</th>
+
+                            <th>Phone</th>
+
+                            <th>Blood Group</th>
+
+                            <th>Status</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="patientsTableBody">
+
+                        <!-- JavaScript adds patients here -->
+
+                    </tbody>
+
+
+                </table>
+
+
+
+                <!-- Empty State -->
+
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-user-injured"></i>
+
+                    </div>
+
+
+                    <h3>No Patients Yet</h3>
+
+
+                    <p>
+                        Register your first patient
+                        to see patient information here.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        id="emptyRegisterButton"
+                        class="secondary-button"
+                    >
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Register First Patient
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         REGISTER PATIENT MODAL
+    ====================================================== -->
+
+    <div
+        id="patientModal"
+        class="modal"
+    >
+
+
+        <div class="modal-box">
+
+
+            <!-- Modal Header -->
+
+            <div class="modal-header">
+
+
+                <div>
+
+                    <h2>Register New Patient</h2>
+
+                    <p>
+                        Enter patient information below
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closePatientModal"
+                    class="close-button"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- Patient Form -->
+
+            <form id="patientForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- First Name -->
+
+                    <div class="form-group">
+
+                        <label for="firstName">
+                            First Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            placeholder="Enter first name"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Last Name -->
+
+                    <div class="form-group">
+
+                        <label for="lastName">
+                            Last Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            placeholder="Enter last name"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Gender -->
+
+                    <div class="form-group">
+
+                        <label for="gender">
+                            Gender *
+                        </label>
+
+                        <select
+                            id="gender"
+                            required
+                        >
+
+                            <option value="">
+                                Select gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Age -->
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Age *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            min="0"
+                            max="150"
+                            placeholder="Enter age"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Date of Birth -->
+
+                    <div class="form-group">
+
+                        <label for="dateOfBirth">
+                            Date of Birth
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dateOfBirth"
+                        >
+
+                    </div>
+
+
+
+                    <!-- Phone -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Blood Group -->
+
+                    <div class="form-group">
+
+                        <label for="bloodGroup">
+                            Blood Group
+                        </label>
+
+                        <select id="bloodGroup">
+
+                            <option value="">
+                                Select blood group
+                            </option>
+
+                            <option value="A+">
+                                A+
+                            </option>
+
+                            <option value="A-">
+                                A-
+                            </option>
+
+                            <option value="B+">
+                                B+
+                            </option>
+
+                            <option value="B-">
+                                B-
+                            </option>
+
+                            <option value="AB+">
+                                AB+
+                            </option>
+
+                            <option value="AB-">
+                                AB-
+                            </option>
+
+                            <option value="O+">
+                                O+
+                            </option>
+
+                            <option value="O-">
+                                O-
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter email address"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+
+                    <!-- Status -->
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Patient Status
+                        </label>
+
+                        <select id="status">
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Admitted">
+                                Admitted
+                            </option>
+
+                            <option value="Discharged">
+                                Discharged
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Address -->
+
+                    <div class="form-group full-width">
+
+                        <label for="address">
+                            Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            rows="3"
+                            placeholder="Enter patient address"
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- Emergency Contact -->
+
+                    <div class="form-group full-width">
+
+                        <label for="emergencyContact">
+                            Emergency Contact
+                        </label>
+
+                        <input
+                            type="text"
+                            id="emergencyContact"
+                            placeholder="Name and phone number"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Form Buttons -->
+
+                <div class="form-buttons">
+
+
+                    <button
+                        type="button"
+                        id="cancelPatientButton"
+                        class="cancel-button"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="savePatientButton"
+                        class="save-button"
+                    >
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        Save Patient
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PATIENT DETAILS MODAL
+    ====================================================== -->
+
+    <div
+        id="detailsModal"
+        class="modal"
+    >
+
+
+        <div class="modal-box details-box">
+
+
+            <div class="modal-header">
+
+
+                <div>
+
+                    <h2>Patient Details</h2>
+
+                    <p>
+                        Patient information
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeDetailsModal"
+                    class="close-button"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+
+            </div>
+
+
+            <div id="patientDetails">
+
+                <!-- JavaScript displays details here -->
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NEW PATIENTS JAVASCRIPT
+    ====================================================== -->
+
+    <script src="./patients.js"></script>
+
+
+</body>
+
+</html>

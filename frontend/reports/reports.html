@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Reports | Daro Labu Hospital</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reports.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="hospital-logo">
+                <i class="fas fa-hospital"></i>
+            </div>
+
+            <div>
+                <h2>Daro Labu</h2>
+                <span>Hospital Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="../dashboard.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="../patients/patients.html">
+                <i class="fas fa-user-injured"></i>
+                <span>Patients</span>
+            </a>
+
+            <a href="../doctors/doctors.html">
+                <i class="fas fa-user-doctor"></i>
+                <span>Doctors</span>
+            </a>
+
+            <a href="../appointments/appointments.html">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+
+            <a href="../medical-records/medical-records.html">
+                <i class="fas fa-file-medical"></i>
+                <span>Medical Records</span>
+            </a>
+
+            <a href="../laboratory/laboratory.html">
+                <i class="fas fa-flask"></i>
+                <span>Laboratory</span>
+            </a>
+
+            <a href="../pharmacy/pharmacy.html">
+                <i class="fas fa-pills"></i>
+                <span>Pharmacy</span>
+            </a>
+
+            <a href="../prescriptions/prescriptions.html">
+                <i class="fas fa-prescription-bottle-medical"></i>
+                <span>Prescriptions</span>
+            </a>
+
+            <a href="../billing/billing.html">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Billing</span>
+            </a>
+
+            <a href="../billing/payment.html">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Payments</span>
+            </a>
+
+            <a
+                href="reports.html"
+                class="active"
+            >
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+            <a href="../settings/settings.html">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="../login.html" id="logoutLink">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button
+                class="menu-toggle"
+                id="mobileMenu"
+                type="button"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="page-title">
+
+                <h1>Reports</h1>
+
+                <p>
+                    Hospital statistics and financial reports
+                </p>
+
+            </div>
+
+            <div class="report-actions">
+
+                <button
+                    class="report-btn"
+                    id="refreshReports"
+                >
+                    <i class="fas fa-refresh"></i>
+                    Refresh
+                </button>
+
+                <button
+                    class="report-btn"
+                    id="printReports"
+                >
+                    <i class="fas fa-print"></i>
+                    Print
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- REPORT CONTENT -->
+        <section class="reports-page">
+
+
+            <!-- SUMMARY CARDS -->
+            <div class="report-cards">
+
+                <div class="report-card">
+
+                    <div class="report-icon blue">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Patients</span>
+                        <strong id="totalPatients">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <div class="report-icon green">
+                        <i class="fas fa-user-doctor"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Doctors</span>
+                        <strong id="totalDoctors">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <div class="report-icon orange">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Appointments</span>
+                        <strong id="totalAppointments">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <div class="report-icon purple">
+                        <i class="fas fa-flask"></i>
+                    </div>
+
+                    <div>
+                        <span>Lab Tests</span>
+                        <strong id="totalLaboratory">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <div class="report-icon red">
+                        <i class="fas fa-prescription-bottle-medical"></i>
+                    </div>
+
+                    <div>
+                        <span>Prescriptions</span>
+                        <strong id="totalPrescriptions">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <div class="report-icon teal">
+                        <i class="fas fa-pills"></i>
+                    </div>
+
+                    <div>
+                        <span>Medicines</span>
+                        <strong id="totalMedicines">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FINANCIAL REPORT -->
+            <div class="report-section">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>Financial Summary</h2>
+
+                        <p>
+                            Current billing and payment information
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="financial-grid">
+
+                    <div class="financial-box">
+
+                        <i class="fas fa-file-invoice-dollar"></i>
+
+                        <div>
+                            <span>Total Invoices</span>
+                            <strong id="totalInvoices">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="financial-box">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <div>
+                            <span>Paid Invoices</span>
+                            <strong id="paidInvoices">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="financial-box">
+
+                        <i class="fas fa-clock"></i>
+
+                        <div>
+                            <span>Pending / Partial</span>
+                            <strong id="pendingInvoices">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="financial-box revenue">
+
+                        <i class="fas fa-money-bill-wave"></i>
+
+                        <div>
+                            <span>Total Revenue</span>
+                            <strong id="totalRevenue">0 ETB</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TWO COLUMNS -->
+            <div class="report-columns">
+
+
+                <!-- RECENT PATIENTS -->
+                <div class="report-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Recent Patients</h2>
+                            <p>Latest registered patients</p>
+                        </div>
+
+                        <i class="fas fa-users"></i>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Date</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="recentPatientsTable">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT INVOICES -->
+                <div class="report-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Recent Invoices</h2>
+                            <p>Latest billing records</p>
+                        </div>
+
+                        <i class="fas fa-receipt"></i>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Invoice</th>
+                                    <th>Patient</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="recentInvoicesTable">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MODULE SUMMARY -->
+            <div class="report-section">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>Module Summary</h2>
+                        <p>Current records in each hospital module</p>
+                    </div>
+
+                </div>
+
+
+                <div class="module-summary">
+
+                    <div>
+                        <span>Medical Records</span>
+                        <strong id="totalMedicalRecords">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Payments</span>
+                        <strong id="totalPayments">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Dispensing Records</span>
+                        <strong id="totalDispensing">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/main.js"></script>
+<script src="../js/reports.js"></script>
+
+</body>
+
+</html>

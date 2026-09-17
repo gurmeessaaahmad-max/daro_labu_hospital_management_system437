@@ -1,0 +1,397 @@
+/* =========================================
+   DARO LABU HOSPITAL
+   REPORTS
+========================================= */
+
+.reports-page {
+    padding: 25px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+
+/* TOP ACTIONS */
+
+.report-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.report-btn {
+    border: none;
+    background: #0066a1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.report-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* REPORT CARDS */
+
+.report-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.report-card {
+    background: white;
+    border: 1px solid #e7edf2;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.report-card span {
+    display: block;
+    color: #7b8794;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.report-card strong {
+    font-size: 25px;
+    color: #172b4d;
+}
+
+
+/* ICONS */
+
+.report-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.report-icon.blue {
+    background: #e8f3ff;
+    color: #0066a1;
+}
+
+.report-icon.green {
+    background: #eaf8ef;
+    color: #1d8b4c;
+}
+
+.report-icon.orange {
+    background: #fff4e5;
+    color: #e88900;
+}
+
+.report-icon.purple {
+    background: #f1eaff;
+    color: #7a42c7;
+}
+
+.report-icon.red {
+    background: #ffecec;
+    color: #d73737;
+}
+
+.report-icon.teal {
+    background: #e7f8f6;
+    color: #168b82;
+}
+
+
+/* SECTION */
+
+.report-section {
+    background: white;
+    border: 1px solid #e7edf2;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    margin: 0 0 5px;
+    color: #172b4d;
+    font-size: 20px;
+}
+
+.section-title p {
+    margin: 0;
+    color: #8492a6;
+    font-size: 13px;
+}
+
+
+/* FINANCIAL */
+
+.financial-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.financial-box {
+    padding: 18px;
+    border-radius: 10px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.financial-box > i {
+    font-size: 22px;
+    color: #0066a1;
+}
+
+.financial-box span {
+    display: block;
+    color: #8492a6;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.financial-box strong {
+    color: #172b4d;
+    font-size: 18px;
+}
+
+.financial-box.revenue {
+    background: #eaf8ef;
+}
+
+.financial-box.revenue > i {
+    color: #1d8b4c;
+}
+
+.financial-box.revenue strong {
+    color: #1d8b4c;
+}
+
+
+/* COLUMNS */
+
+.report-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.report-panel {
+    background: white;
+    border: 1px solid #e7edf2;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.panel-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.panel-header h2 {
+    margin: 0 0 4px;
+    color: #172b4d;
+    font-size: 18px;
+}
+
+.panel-header p {
+    margin: 0;
+    color: #8492a6;
+    font-size: 12px;
+}
+
+.panel-header > i {
+    font-size: 22px;
+    color: #0066a1;
+}
+
+
+/* TABLE */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    padding: 13px 15px;
+    text-align: left;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.table-container th {
+    background: #f8fafc;
+    color: #637381;
+    font-weight: 600;
+}
+
+.table-container td {
+    color: #344563;
+}
+
+.empty-row {
+    text-align: center !important;
+    color: #9aa6b2 !important;
+    padding: 30px !important;
+}
+
+
+/* STATUS */
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-paid {
+    background: #e8f7ee;
+    color: #18794e;
+}
+
+.status-pending {
+    background: #fff4e5;
+    color: #a86100;
+}
+
+.status-partial {
+    background: #eaf3ff;
+    color: #1769aa;
+}
+
+
+/* MODULE SUMMARY */
+
+.module-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.module-summary > div {
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.module-summary span {
+    display: block;
+    color: #8492a6;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.module-summary strong {
+    font-size: 28px;
+    color: #0066a1;
+}
+
+
+/* PRINT */
+
+@media print {
+
+    .sidebar,
+    .topbar button,
+    .report-actions {
+        display: none !important;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .reports-page {
+        padding: 0;
+        max-width: none;
+    }
+
+    .report-card,
+    .report-section,
+    .report-panel {
+        box-shadow: none;
+    }
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .report-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .financial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .report-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .module-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .report-actions {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .reports-page {
+        padding: 15px;
+    }
+
+    .report-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .financial-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

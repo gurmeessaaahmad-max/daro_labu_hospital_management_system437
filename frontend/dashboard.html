@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Daro Labu Hospital</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         MOBILE OVERLAY
+    ========================== -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Hospital Logo / Brand -->
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
+
+            <div class="brand-text">
+                <h1>Daro Labu</h1>
+                <p>Hospital Management</p>
+            </div>
+
+        </div>
+
+
+        <!-- Menu Title -->
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-menu">
+
+            <a
+                href="dashboard.html"
+                class="menu-link active"
+                data-module="dashboard"
+            >
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="patients/patients.html"
+                class="menu-link"
+                data-module="patients"
+            >
+                <i class="fa-solid fa-user-injured"></i>
+                <span>Patients</span>
+            </a>
+
+
+            <a
+                href="doctors/doctors.html"
+                class="menu-link"
+                data-module="doctors"
+            >
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Doctors</span>
+            </a>
+
+
+            <a
+                href="appointments/appointments.html"
+                class="menu-link"
+                data-module="appointments"
+            >
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+
+
+            <a
+                href="medical-records/medical-records.html"
+                class="menu-link"
+                data-module="medical-records"
+            >
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Records</span>
+            </a>
+
+
+            <a
+                href="laboratory/laboratory.html"
+                class="menu-link"
+                data-module="laboratory"
+            >
+                <i class="fa-solid fa-flask"></i>
+                <span>Laboratory</span>
+            </a>
+
+
+            <a
+                href="pharmacy/pharmacy.html"
+                class="menu-link"
+                data-module="pharmacy"
+            >
+                <i class="fa-solid fa-pills"></i>
+                <span>Pharmacy</span>
+            </a>
+
+
+            <a
+                href="prescriptions/prescriptions.html"
+                class="menu-link"
+                data-module="prescriptions"
+            >
+                <i class="fa-solid fa-prescription-bottle-medical"></i>
+                <span>Prescriptions</span>
+            </a>
+
+
+            <a
+                href="billing/billing.html"
+                class="menu-link"
+                data-module="billing"
+            >
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Billing</span>
+            </a>
+
+
+            <a
+                href="billing/payment.html"
+                class="menu-link"
+                data-module="payments"
+            >
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports/reports.html"
+                class="menu-link"
+                data-module="reports"
+            >
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+
+            <a
+                href="settings/settings.html"
+                class="menu-link"
+                data-module="settings"
+            >
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="logout-btn"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN AREA
+    ========================== -->
+    <main class="main-content">
+
+
+        <!-- =========================
+             TOP BAR
+        ========================== -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    id="menuToggle"
+                    class="menu-toggle"
+                    aria-label="Open menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome to Daro Labu Hospital Management System</p>
+                </div>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="user-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="user-info">
+                    <strong id="topUserName">
+                        System Administrator
+                    </strong>
+
+                    <span id="topUserRole">
+                        Admin
+                    </span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             PAGE CONTENT
+        ========================== -->
+        <section class="dashboard-content">
+
+
+            <!-- Welcome -->
+            <div class="welcome-section">
+
+                <h1>
+                    Welcome,
+                    <span id="welcomeUser">
+                        System Administrator
+                    </span>
+                </h1>
+
+                <p>
+                    You are logged in to the Daro Labu Hospital Management System.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 STATISTICS
+            ========================== -->
+            <div class="stats-grid">
+
+
+                <!-- Patients -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-user-injured"></i>
+                    </div>
+
+                    <div class="stat-information">
+                        <span>Total Patients</span>
+                        <strong id="totalPatients">0</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Doctors -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+
+                    <div class="stat-information">
+                        <span>Total Doctors</span>
+                        <strong id="totalDoctors">0</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Appointments -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+
+                    <div class="stat-information">
+                        <span>Appointments</span>
+                        <strong id="totalAppointments">0</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Revenue -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+
+                    <div class="stat-information">
+                        <span>Total Revenue</span>
+                        <strong id="totalRevenue">0.00 ETB</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 QUICK ACTIONS
+            ========================== -->
+            <section class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>
+                            <i class="fa-solid fa-bolt"></i>
+                            Quick Actions
+                        </h2>
+
+                        <p>
+                            Quickly access important hospital functions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+
+                    <a
+                        href="patients/patients.html"
+                        class="quick-action"
+                        data-module="patients"
+                    >
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+
+                        <div>
+                            <strong>Register Patient</strong>
+                            <span>Add a new patient</span>
+                        </div>
+                    </a>
+
+
+                    <a
+                        href="doctors/doctors.html"
+                        class="quick-action"
+                        data-module="doctors"
+                    >
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+
+                        <div>
+                            <strong>Manage Doctors</strong>
+                            <span>View hospital doctors</span>
+                        </div>
+                    </a>
+
+
+                    <a
+                        href="appointments/appointments.html"
+                        class="quick-action"
+                        data-module="appointments"
+                    >
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                        </div>
+
+                        <div>
+                            <strong>New Appointment</strong>
+                            <span>Schedule an appointment</span>
+                        </div>
+                    </a>
+
+
+                    <a
+                        href="laboratory/laboratory.html"
+                        class="quick-action"
+                        data-module="laboratory"
+                    >
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+
+                        <div>
+                            <strong>Laboratory</strong>
+                            <span>Manage laboratory tests</span>
+                        </div>
+                    </a>
+
+
+                    <a
+                        href="pharmacy/pharmacy.html"
+                        class="quick-action"
+                        data-module="pharmacy"
+                    >
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+
+                        <div>
+                            <strong>Pharmacy</strong>
+                            <span>Manage medicines</span>
+                        </div>
+                    </a>
+
+
+                    <a
+                        href="billing/billing.html"
+                        class="quick-action"
+                        data-module="billing"
+                    >
+                        <div class="quick-icon">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+
+                        <div>
+                            <strong>Create Billing</strong>
+                            <span>Create hospital invoice</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SYSTEM INFORMATION
+            ========================== -->
+            <section class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>
+                            <i class="fa-solid fa-circle-info"></i>
+                            System Information
+                        </h2>
+
+                        <p>
+                            Current hospital management system status.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="information-grid">
+
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-hospital"></i>
+                        </div>
+
+                        <div>
+                            <span>Hospital</span>
+                            <strong id="hospitalName">
+                                Daro Labu Hospital
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <div>
+                            <span>System Status</span>
+                            <strong class="status-online">
+                                <i class="fa-solid fa-circle"></i>
+                                System Online
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+
+                        <div>
+                            <span>Data Storage</span>
+                            <strong>
+                                Local Storage
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-card">
+
+                        <div class="information-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+                            <span>Version</span>
+                            <strong>
+                                Frontend v1.0
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+            <footer class="dashboard-footer">
+
+                <p>
+                    © <span id="currentYear"></span>
+                    Daro Labu Hospital.
+                    All Rights Reserved.
+                </p>
+
+            </footer>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <!-- Authentication -->
+    <script src="js/auth.js"></script>
+
+    <!-- Dashboard -->
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

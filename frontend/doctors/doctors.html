@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doctors | Daro Labu Hospital</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Doctors CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/doctors.css?v=3"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay">
+    </div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar">
+
+        <!-- Hospital Header -->
+
+        <div class="sidebar-header">
+
+            <div class="hospital-logo">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
+
+            <div class="hospital-name">
+
+                <h2>Daro Labu</h2>
+
+                <span>Hospital Management</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Logged-in User -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="user-info">
+
+                <strong id="sidebarUsername">
+                    Administrator
+                </strong>
+
+                <span id="sidebarRole">
+                    Admin
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-section-title">
+                MAIN MENU
+            </div>
+
+
+            <!-- Dashboard -->
+
+            <a
+                href="../dashboard.html"
+                class="nav-link"
+                data-module="dashboard">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <!-- Patients -->
+
+            <a
+                href="../patients/patients.html"
+                class="nav-link"
+                data-module="patients">
+
+                <i class="fa-solid fa-hospital-user"></i>
+
+                <span>Patients</span>
+
+            </a>
+
+
+            <!-- Doctors -->
+
+            <a
+                href="doctors.html"
+                class="nav-link active"
+                data-module="doctors">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <span>Doctors</span>
+
+            </a>
+
+
+            <!-- Appointments -->
+
+            <a
+                href="../appointments/appointments.html"
+                class="nav-link"
+                data-module="appointments">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <span>Appointments</span>
+
+            </a>
+
+
+            <!-- Medical Records -->
+
+            <a
+                href="../medical-records/medical-records.html"
+                class="nav-link"
+                data-module="medical-records">
+
+                <i class="fa-solid fa-file-medical"></i>
+
+                <span>Medical Records</span>
+
+            </a>
+
+
+            <!-- Services -->
+
+            <div class="nav-section-title">
+                SERVICES
+            </div>
+
+
+            <!-- Laboratory -->
+
+            <a
+                href="../laboratory/laboratory.html"
+                class="nav-link"
+                data-module="laboratory">
+
+                <i class="fa-solid fa-flask"></i>
+
+                <span>Laboratory</span>
+
+            </a>
+
+
+            <!-- Pharmacy -->
+
+            <a
+                href="../pharmacy/pharmacy.html"
+                class="nav-link"
+                data-module="pharmacy">
+
+                <i class="fa-solid fa-pills"></i>
+
+                <span>Pharmacy</span>
+
+            </a>
+
+
+            <!-- Prescriptions -->
+
+            <a
+                href="../prescriptions/prescriptions.html"
+                class="nav-link"
+                data-module="prescriptions">
+
+                <i class="fa-solid fa-prescription-bottle-medical"></i>
+
+                <span>Prescriptions</span>
+
+            </a>
+
+
+            <!-- Billing -->
+
+            <a
+                href="../billing/billing.html"
+                class="nav-link"
+                data-module="billing">
+
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                <span>Billing</span>
+
+            </a>
+
+
+            <!-- Payments -->
+
+            <a
+                href="../billing/payment.html"
+                class="nav-link"
+                data-module="payments">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <span>Payments</span>
+
+            </a>
+
+
+            <!-- System -->
+
+            <div class="nav-section-title">
+                SYSTEM
+            </div>
+
+
+            <!-- Reports -->
+
+            <a
+                href="../reports/reports.html"
+                class="nav-link"
+                data-module="reports">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>Reports</span>
+
+            </a>
+
+
+            <!-- Settings -->
+
+            <a
+                href="../settings/settings.html"
+                class="nav-link"
+                data-module="settings">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <!-- Logout -->
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <!-- Mobile Menu -->
+
+                <button
+                    type="button"
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open menu">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <!-- Page Heading -->
+
+                <div class="page-heading">
+
+                    <h1>
+                        Doctors
+                    </h1>
+
+                    <p>
+                        Manage hospital doctors and medical staff
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Top Right -->
+
+            <div class="topbar-right">
+
+                <!-- Notifications -->
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    id="notificationButton"
+                    title="Notifications">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span
+                        class="notification-badge"
+                        id="notificationBadge">
+                        0
+                    </span>
+
+                </button>
+
+
+                <!-- Profile -->
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <div class="profile-info">
+
+                        <strong id="topUsername">
+                            Administrator
+                        </strong>
+
+                        <span id="topRole">
+                            Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="content">
+
+
+            <!-- =================================================
+                 PAGE INTRO
+            ================================================== -->
+
+            <div class="page-intro">
+
+                <div>
+
+                    <h2>
+                        Doctor Management
+                    </h2>
+
+                    <p>
+                        Register, search and manage doctors working
+                        at Daro Labu Hospital.
+                    </p>
+
+                </div>
+
+
+                <!-- Add Doctor -->
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="openDoctorModal">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Add Doctor
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STATISTICS
+            ================================================== -->
+
+            <div class="stats-grid">
+
+
+                <!-- Total Doctors -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+
+                        <i class="fa-solid fa-user-doctor"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            Total Doctors
+                        </span>
+
+                        <strong id="doctorTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- General Medicine -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+
+                        <i class="fa-solid fa-stethoscope"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            General Medicine
+                        </span>
+
+                        <strong id="generalMedicineTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Specialists -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            Specialists
+                        </span>
+
+                        <strong id="specialistTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Available -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            Active Doctors
+                        </span>
+
+                        <strong id="availableTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SEARCH AND FILTER
+            ================================================== -->
+
+            <div class="search-card">
+
+
+                <!-- Search -->
+
+                <div class="search-wrapper">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="doctorSearch"
+                        placeholder="Search doctor by name, ID or specialty..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <!-- Department Filter -->
+
+                <div class="filter-wrapper">
+
+                    <i class="fa-solid fa-filter"></i>
+
+                    <select id="departmentFilter">
+
+                        <option value="all">
+                            All Departments
+                        </option>
+
+                        <!-- Departments will be loaded from MySQL -->
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REGISTERED DOCTORS HEADING
+            ================================================== -->
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Registered Doctors
+                    </h2>
+
+                    <p>
+                        Doctor information and availability
+                    </p>
+
+                </div>
+
+
+                <span
+                    class="doctor-count"
+                    id="doctorCount">
+                    0 Doctors
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOADING MESSAGE
+            ================================================== -->
+
+            <div
+                class="loading-state"
+                id="doctorLoading"
+                style="display: none;">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <span>
+                    Loading doctors...
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ERROR MESSAGE
+            ================================================== -->
+
+            <div
+                class="error-state"
+                id="doctorError"
+                style="display: none;">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <span id="doctorErrorMessage">
+                    Unable to load doctors.
+                </span>
+
+                <button
+                    type="button"
+                    id="retryDoctors">
+
+                    Retry
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EMPTY MESSAGE
+            ================================================== -->
+
+            <div
+                class="empty-state"
+                id="doctorEmpty"
+                style="display: none;">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <h3>
+                    No Doctors Found
+                </h3>
+
+                <p>
+                    There are no doctors matching your search.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DOCTOR CARDS
+            ================================================== -->
+
+            <div
+                class="doctor-grid"
+                id="doctorGrid">
+
+                <!-- Doctors will be loaded from Flask/MySQL -->
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         ADD / EDIT DOCTOR MODAL
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="doctorModal"
+        aria-hidden="true">
+
+        <div class="modal-content">
+
+
+            <!-- =================================================
+                 MODAL HEADER
+            ================================================== -->
+
+            <div class="modal-header">
+
+                <div class="modal-header-info">
+
+                    <div class="modal-title-icon">
+
+                        <i class="fa-solid fa-user-doctor"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2 id="doctorModalTitle">
+                            Add New Doctor
+                        </h2>
+
+                        <p id="doctorModalDescription">
+                            Enter the doctor's information below.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Close -->
+
+                <button
+                    type="button"
+                    class="close-button"
+                    id="closeDoctorModal"
+                    aria-label="Close">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DOCTOR FORM
+            ================================================== -->
+
+            <form
+                id="doctorForm"
+                autocomplete="off">
+
+
+                <!-- Hidden Doctor ID -->
+
+                <input
+                    type="hidden"
+                    id="doctorId"
+                    value=""
+                >
+
+
+                <div class="form-grid">
+
+
+                    <!-- First Name -->
+
+                    <div class="form-group">
+
+                        <label for="doctorFirstName">
+                            First Name *
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="doctorFirstName"
+                                name="first_name"
+                                placeholder="Enter first name"
+                                maxlength="50"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Middle Name -->
+
+                    <div class="form-group">
+
+                        <label for="doctorMiddleName">
+                            Middle Name
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="doctorMiddleName"
+                                name="middle_name"
+                                placeholder="Enter middle name"
+                                maxlength="50"
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Last Name -->
+
+                    <div class="form-group">
+
+                        <label for="doctorLastName">
+                            Last Name *
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="doctorLastName"
+                                name="last_name"
+                                placeholder="Enter last name"
+                                maxlength="50"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Specialization -->
+
+                    <div class="form-group">
+
+                        <label for="specialty">
+                            Specialization
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-stethoscope"></i>
+
+                            <input
+                                type="text"
+                                id="specialty"
+                                name="specialization"
+                                placeholder="Example: Cardiologist"
+                                maxlength="100"
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Department -->
+
+                    <div class="form-group">
+
+                        <label for="department">
+                            Department *
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-building"></i>
+
+                            <select
+                                id="department"
+                                name="department_id"
+                                required>
+
+                                <option value="">
+                                    Loading departments...
+                                </option>
+
+                                <!-- Loaded dynamically from Flask -->
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- License Number -->
+
+                    <div class="form-group">
+
+                        <label for="licenseNumber">
+                            License Number
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                            <input
+                                type="text"
+                                id="licenseNumber"
+                                name="license_number"
+                                placeholder="Enter license number"
+                                maxlength="100"
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Phone -->
+
+                    <div class="form-group">
+
+                        <label for="doctorPhone">
+                            Phone *
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input
+                                type="tel"
+                                id="doctorPhone"
+                                name="phone"
+                                placeholder="Example: 0912345678"
+                                maxlength="20"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="doctorEmail">
+                            Email
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="doctorEmail"
+                                name="email"
+                                placeholder="doctor@example.com"
+                                maxlength="100"
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Status -->
+
+                    <div class="form-group">
+
+                        <label for="doctorStatus">
+                            Status
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <select
+                                id="doctorStatus"
+                                name="status">
+
+                                <option value="Active">
+                                    Active
+                                </option>
+
+                                <option value="Inactive">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FORM MESSAGE
+                ================================================== -->
+
+                <div
+                    class="form-message"
+                    id="doctorFormMessage"
+                    style="display: none;">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MODAL ACTIONS
+                ================================================== -->
+
+                <div class="modal-actions">
+
+                    <!-- Cancel -->
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelDoctor">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                        Cancel
+
+                    </button>
+
+
+                    <!-- Save -->
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="saveDoctorButton">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        <span id="saveDoctorText">
+                            Save Doctor
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         AUTHENTICATION
+    ====================================================== -->
+
+    <script src="../js/auth.js?v=3"></script>
+
+
+    <!-- =====================================================
+         DOCTORS JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/doctors.js?v=3"></script>
+</body>
+</html>
+```

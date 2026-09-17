@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Appointments | Daro Labu Hospital</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- Appointment CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/appointments.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
+<aside class="sidebar">
+
+    <!-- Hospital Logo -->
+    <div class="sidebar-header">
+
+        <div class="hospital-logo">
+            <i class="fa-solid fa-hospital"></i>
+        </div>
+
+        <div class="hospital-name">
+            <h2>Daro Labu</h2>
+            <span>Hospital</span>
+        </div>
+
+    </div>
+
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+        <a href="../dashboard/dashboard.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+
+        <a href="../patients/patients.html">
+            <i class="fa-solid fa-user-injured"></i>
+            <span>Patients</span>
+        </a>
+
+
+        <a href="../doctors/doctors.html">
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Doctors</span>
+        </a>
+
+
+        <a
+            href="appointments.html"
+            class="active"
+        >
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Appointments</span>
+        </a>
+
+
+        <a href="../pharmacy/pharmacy.html">
+            <i class="fa-solid fa-pills"></i>
+            <span>Pharmacy</span>
+        </a>
+
+
+        <a href="../laboratory/laboratory.html">
+            <i class="fa-solid fa-flask"></i>
+            <span>Laboratory</span>
+        </a>
+
+
+        <a href="../billing/billing.html">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>Billing</span>
+        </a>
+
+
+        <a href="../reports/reports.html">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Reports</span>
+        </a>
+
+
+        <a href="../settings/settings.html">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+
+    <!-- Logout -->
+    <div class="sidebar-bottom">
+
+        <a href="../login/login.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         PAGE HEADER
+         ================================================= -->
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>Appointments</h1>
+
+            <p>
+                Manage patient appointments
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="addAppointmentBtn"
+            class="primary-button"
+        >
+
+            <i class="fa-solid fa-plus"></i>
+
+            New Appointment
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
+
+    <section class="appointment-stats">
+
+
+        <!-- Total -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div>
+
+                <p>Total Appointments</p>
+
+                <h3 id="totalAppointments">0</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- Scheduled -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+
+                <p>Scheduled</p>
+
+                <h3 id="scheduledAppointments">0</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- Completed -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+
+                <p>Completed</p>
+
+                <h3 id="completedAppointments">0</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- Cancelled -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+
+            <div>
+
+                <p>Cancelled</p>
+
+                <h3 id="cancelledAppointments">0</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         APPOINTMENTS CONTENT
+         ================================================= -->
+
+    <section class="appointments-card">
+
+
+        <!-- Toolbar -->
+        <div class="appointments-toolbar">
+
+
+            <!-- Search -->
+            <div class="search-container">
+
+                <i class="fa-solid fa-search"></i>
+
+                <input
+                    type="text"
+                    id="searchAppointment"
+                    placeholder="Search appointments..."
+                >
+
+            </div>
+
+
+            <!-- Status -->
+            <select
+                id="statusFilter"
+                class="status-filter"
+            >
+
+                <option value="">
+                    All Status
+                </option>
+
+                <option value="Scheduled">
+                    Scheduled
+                </option>
+
+                <option value="Confirmed">
+                    Confirmed
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+                <option value="No Show">
+                    No Show
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TABLE
+             ================================================= -->
+
+        <div class="table-wrapper">
+
+            <table class="appointments-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Patient</th>
+
+                        <th>Doctor</th>
+
+                        <th>Department</th>
+
+                        <th>Date</th>
+
+                        <th>Time</th>
+
+                        <th>Reason</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="appointmentsTableBody">
+
+                    <!-- JavaScript will insert rows -->
+
+                </tbody>
+
+            </table>
+
+
+            <!-- Empty message -->
+            <div
+                id="emptyAppointments"
+                class="empty-appointments"
+            >
+
+                <i class="fa-solid fa-calendar-xmark"></i>
+
+                <h3>No Appointments</h3>
+
+                <p>
+                    No appointments are available.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     APPOINTMENT MODAL
+     ===================================================== -->
+
+<div
+    id="appointmentModal"
+    class="modal-overlay"
+>
+
+
+    <div class="appointment-modal">
+
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span id="modalTitle">
+                        New Appointment
+                    </span>
+                </h2>
+
+                <p>
+                    Enter appointment information
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeAppointmentBtn"
+                class="close-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- Form -->
+        <form
+            id="appointmentForm"
+            autocomplete="off"
+        >
+
+
+            <!-- Hidden ID -->
+            <input
+                type="hidden"
+                id="appointmentId"
+            >
+
+
+            <div class="form-body">
+
+
+                <!-- Patient -->
+                <div class="form-group">
+
+                    <label for="patientSelect">
+
+                        Patient
+
+                        <span>*</span>
+
+                    </label>
+
+                    <select
+                        id="patientSelect"
+                        required
+                    >
+
+                        <option value="">
+                            Select Patient
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Doctor -->
+                <div class="form-group">
+
+                    <label for="doctorSelect">
+
+                        Doctor
+
+                        <span>*</span>
+
+                    </label>
+
+                    <select
+                        id="doctorSelect"
+                        required
+                    >
+
+                        <option value="">
+                            Select Doctor
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Department -->
+                <div class="form-group">
+
+                    <label for="department">
+                        Department
+                    </label>
+
+                    <input
+                        type="text"
+                        id="department"
+                        readonly
+                        placeholder="Doctor department"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="departmentId"
+                    >
+
+                </div>
+
+
+
+                <!-- Date and Time -->
+                <div class="two-columns">
+
+
+                    <div class="form-group">
+
+                        <label for="appointmentDate">
+
+                            Appointment Date
+
+                            <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="date"
+                            id="appointmentDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="appointmentTime">
+
+                            Appointment Time
+
+                            <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="time"
+                            id="appointmentTime"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Status -->
+                <div class="form-group">
+
+                    <label for="appointmentStatus">
+                        Status
+                    </label>
+
+                    <select id="appointmentStatus">
+
+                        <option value="Scheduled">
+                            Scheduled
+                        </option>
+
+                        <option value="Confirmed">
+                            Confirmed
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                        <option value="Cancelled">
+                            Cancelled
+                        </option>
+
+                        <option value="No Show">
+                            No Show
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Reason -->
+                <div class="form-group">
+
+                    <label for="reason">
+                        Reason
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reason"
+                        maxlength="255"
+                        placeholder="Reason for appointment"
+                    >
+
+                </div>
+
+
+
+                <!-- Notes -->
+                <div class="form-group">
+
+                    <label for="notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Additional notes..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Form Footer -->
+            <div class="modal-footer">
+
+
+                <button
+                    type="button"
+                    id="cancelAppointmentBtn"
+                    class="secondary-button"
+                >
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="saveAppointmentBtn"
+                    class="primary-button"
+                >
+
+                    <i class="fa-solid fa-save"></i>
+
+                    Save Appointment
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="../js/main.js"></script>
+
+<script src="appointments.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prescriptions | Daro Labu Hospital</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/prescriptions.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fas fa-hospital"></i>
+            </div>
+
+            <div>
+                <h2>Daro Labu</h2>
+                <span>Hospital Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <div class="sidebar-section-title">
+                MAIN
+            </div>
+
+            <a href="../dashboard.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="../patients/patients.html">
+                <i class="fas fa-user-injured"></i>
+                <span>Patients</span>
+            </a>
+
+            <a href="../doctors/doctors.html">
+                <i class="fas fa-user-doctor"></i>
+                <span>Doctors</span>
+            </a>
+
+            <a href="../appointments/appointments.html">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+
+
+            <div class="sidebar-section-title">
+                CLINICAL
+            </div>
+
+            <a href="../medical-records/medical-records.html">
+                <i class="fas fa-file-medical"></i>
+                <span>Medical Records</span>
+            </a>
+
+            <a href="prescriptions.html" class="active">
+                <i class="fas fa-prescription-bottle-medical"></i>
+                <span>Prescriptions</span>
+            </a>
+
+            <a href="../pharmacy/pharmacy.html">
+                <i class="fas fa-pills"></i>
+                <span>Pharmacy</span>
+            </a>
+
+            <a href="../laboratory/laboratory.html">
+                <i class="fas fa-flask"></i>
+                <span>Laboratory</span>
+            </a>
+
+
+            <div class="sidebar-section-title">
+                ADMINISTRATION
+            </div>
+
+            <a href="../billing/billing.html">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Billing</span>
+            </a>
+
+            <a href="../reports/reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+            <a href="../settings/settings.html">
+                <i class="fas fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="../login.html" onclick="logout()">
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <button class="menu-toggle" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div>
+                <h1>Prescriptions</h1>
+                <p>Manage patient medication prescriptions</p>
+            </div>
+
+        </header>
+
+
+        <section class="content-area">
+
+
+            <!-- =================================================
+                 STATISTICS
+                 ================================================= -->
+
+            <div class="prescription-stats">
+
+                <div class="prescription-stat">
+
+                    <i class="fas fa-prescription-bottle-medical"></i>
+
+                    <div>
+                        <span>Total Prescriptions</span>
+                        <strong id="totalPrescriptions">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="prescription-stat">
+
+                    <i class="fas fa-pills"></i>
+
+                    <div>
+                        <span>Total Medicines</span>
+                        <strong id="totalPrescriptionItems">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="prescription-stat">
+
+                    <i class="fas fa-calendar-check"></i>
+
+                    <div>
+                        <span>With Medical Record</span>
+                        <strong id="recordPrescriptions">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="prescription-stat">
+
+                    <i class="fas fa-calendar-day"></i>
+
+                    <div>
+                        <span>Today</span>
+                        <strong id="todayPrescriptions">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PRESCRIPTION FORM
+                 ================================================= -->
+
+            <div class="page-card">
+
+                <div class="card-header">
+
+                    <h2>
+                        <i class="fas fa-file-prescription"></i>
+                        Create Prescription
+                    </h2>
+
+                    <p>
+                        Prescribe one or more medicines for a patient
+                    </p>
+
+                </div>
+
+
+                <form id="prescriptionForm">
+
+                    <!-- Hidden prescription ID for editing -->
+                    <input type="hidden" id="prescriptionId">
+
+
+                    <!-- =============================================
+                         PATIENT / DOCTOR / RECORD
+                         ============================================= -->
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="patient">
+                                Patient *
+                            </label>
+
+                            <select id="patient" required>
+
+                                <option value="">
+                                    Select patient
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="doctor">
+                                Doctor *
+                            </label>
+
+                            <select id="doctor" required>
+
+                                <option value="">
+                                    Select doctor
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="medicalRecord">
+                                Medical Record
+                            </label>
+
+                            <select id="medicalRecord">
+
+                                <option value="">
+                                    Select medical record
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="prescriptionDate">
+                                Prescription Date *
+                            </label>
+
+                            <input type="datetime-local"
+                                   id="prescriptionDate"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =============================================
+                         MEDICINE SECTION
+                         ============================================= -->
+
+                    <h3 class="section-heading">
+
+                        <i class="fas fa-pills"></i>
+
+                        Medicine Information
+
+                    </h3>
+
+
+                    <div id="medicineItems">
+
+
+                        <!-- =========================================
+                             MEDICINE ITEM
+                             ========================================= -->
+
+                        <div class="medicine-item">
+
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Medicine *
+                                    </label>
+
+                                    <select class="medicineSelect"
+                                            required>
+
+                                        <option value="">
+                                            Select medicine
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Quantity *
+                                    </label>
+
+                                    <input type="number"
+                                           class="medicineQuantity"
+                                           min="1"
+                                           value="1"
+                                           required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Dosage
+                                    </label>
+
+                                    <input type="text"
+                                           class="medicineDosage"
+                                           placeholder="e.g. 500 mg">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Frequency
+                                    </label>
+
+                                    <input type="text"
+                                           class="medicineFrequency"
+                                           placeholder="e.g. 3 times daily">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Duration
+                                    </label>
+
+                                    <input type="text"
+                                           class="medicineDuration"
+                                           placeholder="e.g. 5 days">
+
+                                </div>
+
+                            </div>
+
+
+                            <button type="button"
+                                    class="btn-danger removeMedicineBtn">
+
+                                <i class="fas fa-trash"></i>
+
+                                Remove Medicine
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ADD MEDICINE -->
+
+                    <div class="add-medicine-area">
+
+                        <button type="button"
+                                id="addMedicineBtn"
+                                class="btn-secondary">
+
+                            <i class="fas fa-plus"></i>
+
+                            Add Another Medicine
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- =============================================
+                         INSTRUCTIONS
+                         ============================================= -->
+
+                    <div class="form-group">
+
+                        <label for="instructions">
+                            Instructions / Notes
+                        </label>
+
+                        <textarea id="instructions"
+                                  rows="4"
+                                  placeholder="Special instructions for the patient"></textarea>
+
+                    </div>
+
+
+                    <!-- =============================================
+                         FORM ACTIONS
+                         ============================================= -->
+
+                    <div class="form-actions">
+
+                        <button type="submit"
+                                id="savePrescriptionBtn"
+                                class="btn-primary">
+
+                            <i class="fas fa-save"></i>
+
+                            Save Prescription
+
+                        </button>
+
+
+                        <button type="button"
+                                id="clearPrescription"
+                                class="btn-secondary">
+
+                            <i class="fas fa-rotate-left"></i>
+
+                            Clear
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 PRESCRIPTION LIST
+                 ================================================= -->
+
+            <div class="page-card">
+
+                <div class="list-header">
+
+                    <h2>
+
+                        <i class="fas fa-list"></i>
+
+                        Prescription List
+
+                    </h2>
+
+
+                    <div class="search-area">
+
+                        <input type="text"
+                               id="searchPrescription"
+                               placeholder="Search patient, doctor or medicine">
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Patient</th>
+
+                                <th>Doctor</th>
+
+                                <th>Date</th>
+
+                                <th>Medicines</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="prescriptionTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div id="emptyPrescriptions"
+                     class="empty-state">
+
+                    <i class="fas fa-prescription-bottle"></i>
+
+                    <p>No prescriptions found.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     PRESCRIPTION DETAILS MODAL
+     ========================================================= -->
+
+<div class="modal"
+     id="prescriptionModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                <i class="fas fa-file-prescription"></i>
+                Prescription Details
+            </h2>
+
+            <button type="button"
+                    id="closePrescriptionModal">
+
+                <i class="fas fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div id="prescriptionDetails"></div>
+
+
+        <div class="modal-footer">
+
+            <button type="button"
+                    class="btn-secondary"
+                    id="closePrescriptionBtn">
+
+                Close
+
+            </button>
+
+
+            <button type="button"
+                    class="btn-primary"
+                    id="printPrescriptionBtn">
+
+                <i class="fas fa-print"></i>
+
+                Print
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="../js/main.js"></script>
+
+<script src="../js/prescriptions.js"></script>
+
+</body>
+
+</html>
